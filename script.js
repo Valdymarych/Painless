@@ -3,6 +3,9 @@ var script_dom = document.getElementById("script");
 var sigmoisds_for_sum_dom = document.getElementById("sigmmoids_for_sum");
 var toggle_dom = document.getElementById("toggle");
 let canvas_sum=document.getElementById("sum");
+let plus_dom=document.getElementById("plus");
+let counter_dom=document.getElementById("counter");
+let minus_dom=document.getElementById("minus");
 let ctx_sum=canvas_sum.getContext("2d")
 canvas_sum.width=canvas_sum.clientWidth;
 canvas_sum.height=canvas_sum.clientHeight;
@@ -58,6 +61,7 @@ function createCanvas(id){
 
     let newDiv = document.createElement("div");
     newDiv.className="sigm"
+    newDiv.id="sinus"+id
     newDiv.appendChild(canvas);
     newDiv.appendChild(range_div)
     newDiv.appendChild(w_input);
@@ -67,6 +71,11 @@ function createCanvas(id){
         range:range,
         w_input:w_input
     }
+}
+
+function deleteCanvas(){
+    let oldDiv=document.getElementById("sinus"+(sinusoids.length-1));
+    sigmoisds_for_sum_dom.removeChild(oldDiv);
 }
 
 function createSinusoid(){
@@ -99,6 +108,12 @@ function createSinusoid(){
     update(newSinusoid)
 
 
+}
+
+function deleteSinusoid(){
+    deleteCanvas()
+    sinusoids.pop()
+    updateSum()
 }
 
 function updateSum(){
@@ -282,13 +297,25 @@ function set_garmonic(func,i){
 }
 
 function changeMode(event){
-    let f=funcs[event.target[event.target.selectedIndex].text]
+    let f=funcs[toggle_dom[toggle_dom.selectedIndex].text]
     updateSum_mode2(f);
     for (let i=0;i<sinusoids.length;i++){
         set_garmonic(f,i)
     }
 }
 
+function plus(event){
+    createSinusoid()
+    let f=funcs[toggle_dom[toggle_dom.selectedIndex].text]
+    set_garmonic(f,sinusoids.length-1)
+    updateSum()
+}
+function minus(event){
+    deleteSinusoid()
+}
+
+minus_dom.onclick=minus
+plus_dom.onclick=plus
 const funcs ={
     "sin^2 x": f2,
     "x^2":f3,
@@ -304,7 +331,7 @@ for (let func in funcs){
 toggle_dom.onchange=changeMode;
 
 
-for (let  i=0; i<20;i++){
+for (let  i=0; i<2;i++){
     createSinusoid();
 }
 
