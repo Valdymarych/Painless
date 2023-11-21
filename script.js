@@ -282,16 +282,27 @@ function set_garmonic(func,i){
 }
 
 function changeMode(event){
-    console.log(event.target.checked);
-    if (event.target.checked){
-        updateSum_mode2(f);
-        for (let i=0;i<sinusoids.length;i++){
-            set_garmonic(f,i)
-        }
+    let f=funcs[event.target[event.target.selectedIndex].text]
+    updateSum_mode2(f);
+    for (let i=0;i<sinusoids.length;i++){
+        set_garmonic(f,i)
     }
 }
 
-toggle_dom.onclick=changeMode;
+const funcs ={
+    "sin^2 x": f2,
+    "x^2":f3,
+    "x^4":f4,
+    "квадрат":f
+}
+for (let func in funcs){
+    let option=document.createElement('option')
+    option.text=func
+    toggle_dom.appendChild(option)
+}
+
+toggle_dom.onchange=changeMode;
+
 
 for (let  i=0; i<20;i++){
     createSinusoid();

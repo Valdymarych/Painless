@@ -13,7 +13,7 @@ canvas {
 
 .sum canvas {
     margin-bottom: 40px;
-    height: 200px;
+    height: 250px;
 }
 
 input[type="number"]{
@@ -133,4 +133,9 @@ input[type="number"]::-webkit-inner-spin-button{
 
   body {
     margin: 0px;
+  }
+
+  .sigmmoids_for_sum {
+    padding-top: 25%;
+    display: block;
   }
