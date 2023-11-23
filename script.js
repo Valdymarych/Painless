@@ -241,17 +241,18 @@ function f4(x){
     return -x*sinusoid_sum.params.unitY
 }
 
-function f(x){
+function f1(x){
     x=(x+5*Math.PI)%(2*Math.PI)-Math.PI
     
     if (x>0){
-        x=0.5
+        x=1
     } else {
-        x=-0.5
+        x=-1
     }
 
     return -x*sinusoid_sum.params.unitY
 }
+
 
 function updateSum_mode2(func){
     let params=sinusoid_sum.params;
@@ -320,7 +321,7 @@ const funcs ={
     "sin^2 x": f2,
     "x^2":f3,
     "x^4":f4,
-    "квадрат":f
+    "квадрат":f1
 }
 for (let func in funcs){
     let option=document.createElement('option')
