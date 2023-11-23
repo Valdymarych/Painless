@@ -333,7 +333,8 @@ const funcs ={
     "sin^2 x": f2,
     "x^2":f3,
     "x^4":f4,
-    "квадрат":f1
+    "квадрат":f1,
+    "трикутник":f5,
 }
 for (let func in funcs){
     let option=document.createElement('option')
