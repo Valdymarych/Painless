@@ -241,6 +241,18 @@ function f4(x){
     return -x*sinusoid_sum.params.unitY
 }
 
+function f5(x){
+    x=(x+5*Math.PI)%(2*Math.PI)-Math.PI
+    
+    if (x<0){
+        return -(x+2)*sinusoid_sum.params.unitY
+}
+    if(x>0) {
+        return -(-x+2)*sinusoid_sum.params.unitY
+    }
+
+
+}
 function f1(x){
     x=(x+5*Math.PI)%(2*Math.PI)-Math.PI
     
